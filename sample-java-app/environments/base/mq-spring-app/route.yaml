@@ -1,15 +1,15 @@
 ---
-# Source: sample-java-app-spring-app/templates/route.yaml
+# Source: sample-java-app/templates/route.yaml
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: sample-java-app-spring-app
+  name: sample-java-app
   annotations:
     argocd.argoproj.io/sync-options: Validate=false
 spec:
   to:
     kind: Service
-    name: sample-java-app-spring-app
+    name: sample-java-app
     weight: 100
   tls:
     termination: edge

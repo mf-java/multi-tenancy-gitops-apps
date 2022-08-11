@@ -2,4 +2,4 @@ resources:
  - ../../base/sample-java-app-metrics-samples
  - configmap/configmap.yaml
 patchesStrategicMerge:
- - sample-java-app-spring-app/deployment.yaml
+ - sample-java-app/deployment.yaml

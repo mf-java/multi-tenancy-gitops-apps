@@ -25,7 +25,7 @@ spec:
       default: "true"
     - name: test-file
       description: Path of the postman collection
-      default: "postman/sample-java-app-spring-app.postman_collection.json"
+      default: "postman/sample-java-app.postman_collection.json"
   tasks:
     - name: dev-instance-tests
       taskRef:

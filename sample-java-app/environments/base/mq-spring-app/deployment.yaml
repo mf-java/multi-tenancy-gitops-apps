@@ -1,31 +1,31 @@
 ---
-# Source: sample-java-app-spring-app/templates/deployment.yaml
+# Source: sample-java-app/templates/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sample-java-app-spring-app
+  name: sample-java-app
   labels:
-    app.kubernetes.io/name: sample-java-app-spring-app
-    app.kubernetes.io/instance: sample-java-app-spring-app
-    app: sample-java-app-spring-app
+    app.kubernetes.io/name: sample-java-app
+    app.kubernetes.io/instance: sample-java-app
+    app: sample-java-app
     app.kubernetes.io/part-of: inventory
     app.openshift.io/runtime: spring
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: sample-java-app-spring-app
-      app.kubernetes.io/instance: sample-java-app-spring-app
+      app.kubernetes.io/name: sample-java-app
+      app.kubernetes.io/instance: sample-java-app
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: sample-java-app-spring-app
-        app.kubernetes.io/instance: sample-java-app-spring-app
+        app.kubernetes.io/name: sample-java-app
+        app.kubernetes.io/instance: sample-java-app
     spec:
-      serviceAccountName: sample-java-app-spring-app
+      serviceAccountName: sample-java-app
       volumes:
       containers:
-        - name: sample-java-app-spring-app
+        - name: sample-java-app
           image: replace:replace
           imagePullPolicy: IfNotPresent
           volumeMounts:
@@ -62,27 +62,27 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key: QM
-                  name: sample-java-app-spring-app
+                  name: sample-java-app
             - name: CHANNEL
               valueFrom:
                 configMapKeyRef:
                   key: CHANNEL
-                  name: sample-java-app-spring-app
+                  name: sample-java-app
             - name: CONNECTION_NAME
               valueFrom:
                 configMapKeyRef:
                   key: CONNECTION_NAME
-                  name: sample-java-app-spring-app
+                  name: sample-java-app
             - name: QUEUE_NAME
               valueFrom:
                 configMapKeyRef:
                   key: QUEUE_NAME
-                  name: sample-java-app-spring-app
+                  name: sample-java-app
             - name: APP_NAME
               valueFrom:
                 configMapKeyRef:
                   key: APP_NAME
-                  name: sample-java-app-spring-app
+                  name: sample-java-app
             - name: OPENTRACING_JAEGER_ENABLED
               value: "false"
           envFrom:

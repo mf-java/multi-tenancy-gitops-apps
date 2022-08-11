@@ -1,5 +1,5 @@
 ---
-# Source: sample-java-app-spring-app/templates/jaegerconfigmap.yaml
+# Source: sample-java-app/templates/jaegerconfigmap.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:

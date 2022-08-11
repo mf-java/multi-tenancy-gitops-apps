@@ -1,0 +1,10 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: sample-java-app-post-dev
+spec:
+  serviceAccountName: pipeline
+  triggers:
+    - name: sample-java-app-post-dev
+      template:
+        ref: sample-java-app-post-dev

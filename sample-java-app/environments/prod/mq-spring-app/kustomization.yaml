@@ -1,5 +1,5 @@
 resources:
- - ../../base/sample-java-app-spring-app
+ - ../../base/sample-java-app
  - configmap/configmap.yaml
  - configmap/configmap-ccdt.yaml
  #- certificates/prod-sample-java-app-client-certificate.yaml
