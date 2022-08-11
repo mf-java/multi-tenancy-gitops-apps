@@ -15,7 +15,7 @@ spec:
     - name: git-revision
       default: master
     - name: source-dir
-      default: /source
+      default: /source/kubernetes
     - name: image-server
       default: ""
     - name: image-namespace
