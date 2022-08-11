@@ -7,11 +7,11 @@ resources:
 #- triggertemplates/sample-java-app-qm-dev.yaml
 #- triggertemplates/sample-java-app-spring-app-dev.yaml
 #- pipelines/sample-java-app-metric-samples-dev-pipeline.yaml
-- pipelines/ibm-test-pipeline-for-dev.yaml
-- pipelines/ibm-test-pipeline-for-stage.yaml
+#- pipelines/ibm-test-pipeline-for-dev.yaml
+#- pipelines/ibm-test-pipeline-for-stage.yaml
 #- pipelines/java-maven-dev-pipeline.yaml
-- pipelines/sample-java-app-pipeline-dev.yaml
-- pipelines/sample-java-app-spring-app-dev-pipeline.yaml
+#- pipelines/sample-java-app-pipeline-dev.yaml
+- pipelines/sample-java-app-dev-pipeline.yaml
 - roles/custom-pipeline-sa-clusterrole.yaml
 - roles/custom-pipeline-sa-role.yaml
 - roles/custom-ci-pipeline-sa-rolebinding.yaml
