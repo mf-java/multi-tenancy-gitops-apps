@@ -1,4 +1,4 @@
-apiVersion: mq.ibm.com/v1beta1
+apiVersion: sample-java-app.ibm.com/v1beta1
 kind: QueueManager
 metadata:
   name: qm1
@@ -13,21 +13,21 @@ spec:
           configMap:
             name: scripts-configmap
             defaultMode: 0777
-        - name: dynamic-config-volume-mqsc
+        - name: dynamic-config-volume-sample-java-appsc
           configMap:
-            name: dynamic-mqsc-configmap
+            name: dynamic-sample-java-appsc-configmap
             defaultMode: 0777
       containers:
         - env:
-            - name: MQSNOAUT
+            - name: sample-java-appSNOAUT
               value: 'yes'
           name: qmgr
           volumeMounts:
           - name: config-volume-scripts
-            mountPath: /mq-config
+            mountPath: /sample-java-app-config
             readOnly: true
             #optional: true
-          - name: dynamic-config-volume-mqsc
-            mountPath: /dynamic-mq-config-mqsc
+          - name: dynamic-config-volume-sample-java-appsc
+            mountPath: /dynamic-sample-java-app-config-sample-java-appsc
             readOnly: true
             #optional: true

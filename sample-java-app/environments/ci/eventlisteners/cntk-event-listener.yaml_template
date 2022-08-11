@@ -7,25 +7,25 @@ metadata:
 spec:
   serviceAccountName: pipeline
   triggers:
-  - name: mq-qm01-dev
+  - name: sample-java-app-qm01-dev
     interceptors:
       - ref:
           name: "cel"
         params:
         - name: "filter"
-          value: "header.match('X-GitHub-Event', 'push') && body.ref == 'refs/heads/${GIT_BRANCH_QM1}' && body.repository.full_name == '${GIT_ORG}/mq-qm01'"
+          value: "header.match('X-GitHub-Event', 'push') && body.ref == 'refs/heads/${GIT_BRANCH_QM1}' && body.repository.full_name == '${GIT_ORG}/sample-java-app-qm01'"
     bindings:
       - ref: cnkt-trigger-binding
     template:
-      ref: mq-qm-dev
-  # - name: mq-spring-app-dev
+      ref: sample-java-app-qm-dev
+  # - name: sample-java-app-spring-app-dev
   #   interceptors:
   #     - ref:
   #         name: "cel"
   #       params:
   #       - name: "filter"
-  #         value: "header.match('X-GitHub-Event', 'push') && body.ref == 'refs/heads/${GIT_BRANCH_SPRING}' && body.repository.full_name == '${GIT_ORG}/mq-spring-app'"
+  #         value: "header.match('X-GitHub-Event', 'push') && body.ref == 'refs/heads/${GIT_BRANCH_SPRING}' && body.repository.full_name == '${GIT_ORG}/sample-java-app-spring-app'"
   #   bindings:
   #     - ref: cnkt-trigger-binding
   #   template:
-  #     ref: mq-spring-app-dev
+  #     ref: sample-java-app-spring-app-dev

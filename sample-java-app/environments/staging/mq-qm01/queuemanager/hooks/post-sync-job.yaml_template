@@ -19,9 +19,9 @@ spec:
           - ci
           - pipeline
           - start
-          - ibm-mq-promote-stage-prod
+          - ibm-sample-java-app-promote-stage-prod
           - --param
-          - git-url=https://github.com/${GIT_ORG}/mq-qm01.git
+          - git-url=https://github.com/${GIT_ORG}/sample-java-app-qm01.git
           - --param
           - git-revision=${GIT_BRANCH_QM1}
           - --param
@@ -29,12 +29,12 @@ spec:
           - --param
           - dest-environment=prod
           - --param
-          - app-path="mq/environments"
+          - app-path="sample-java-app/environments"
           - --param
           - qm-security=false
           - --param
           - git-pr=true
           - --param
-          - test-plan="jmeter/mq-spring-app.jmx"
+          - test-plan="jmeter/sample-java-app-spring-app.jmx"
       restartPolicy: Never
   backoffLimit: 0

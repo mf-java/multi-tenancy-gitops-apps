@@ -1,7 +1,7 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: mq-self-signed-ca-cert
+  name: sample-java-app-self-signed-ca-cert
   annotations:
     argocd.argoproj.io/sync-wave: "260"
   labels:
@@ -12,7 +12,7 @@ spec:
   dnsNames:
     - >- 
       *.${CLUSTER_DOMAIN}
-  secretName: mq-self-signed-ca-cert
+  secretName: sample-java-app-self-signed-ca-cert
   issuerRef:
     group: cert-manager.io
     kind: ClusterIssuer

@@ -2,8 +2,8 @@ apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
   labels:
-    app: mq-qm-post-dev
-  name: mq-qm-post-dev
+    app: sample-java-app-qm-post-dev
+  name: sample-java-app-qm-post-dev
 spec:
   resourcetemplates:
     - apiVersion: tekton.dev/v1beta1
@@ -13,11 +13,11 @@ spec:
           argocd.argoproj.io/compare-options: IgnoreExtraneous
           argocd.argoproj.io/sync-options: Prune=false
         labels:
-          tekton.dev/pipeline: ibm-mq-promote-dev-stage
-        generateName: ibm-mq-promote-dev-stage-
+          tekton.dev/pipeline: ibm-sample-java-app-promote-dev-stage
+        generateName: ibm-sample-java-app-promote-dev-stage-
       spec:
         params:
         - name: git-url
-          value: https://github.com/${GIT_ORG}/mq-qm01.git
+          value: https://github.com/${GIT_ORG}/sample-java-app-qm01.git
         pipelineRef:
-          name: ibm-mq-promote-dev-stage
+          name: ibm-sample-java-app-promote-dev-stage

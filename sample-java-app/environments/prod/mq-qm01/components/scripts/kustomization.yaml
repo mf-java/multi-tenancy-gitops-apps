@@ -9,5 +9,5 @@ configMapGenerator:
 - name: scripts-configmap
   behavior: create
   files:
-  - start-mqsc.sh
-  - stop-mqsc.sh
+  - start-sample-java-appsc.sh
+  - stop-sample-java-appsc.sh

@@ -19,9 +19,9 @@ spec:
           - ci
           - pipeline
           - start
-          - ibm-mq-promote-dev-stage
+          - ibm-sample-java-app-promote-dev-stage
           - --param
-          - git-url=https://github.com/${GIT_ORG}/mq-spring-app.git
+          - git-url=https://github.com/${GIT_ORG}/sample-java-app-spring-app.git
           - --param
           - git-revision=${GIT_BRANCH_SPRING}
           - --param
@@ -29,10 +29,10 @@ spec:
           - --param
           - dest-environment=staging
           - --param
-          - app-path="mq/environments"
+          - app-path="sample-java-app/environments"
           - --param
           - git-pr=true
           - --param
-          - test-file="postman/mq-spring-app.postman_collection.json"
+          - test-file="postman/sample-java-app-spring-app.postman_collection.json"
       restartPolicy: Never
   backoffLimit: 0

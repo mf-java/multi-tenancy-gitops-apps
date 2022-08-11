@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: ibm-mq-promote-stage-prod
+  name: ibm-sample-java-app-promote-stage-prod
   annotations:
     app.openshift.io/runtime: test
 spec:
@@ -19,7 +19,7 @@ spec:
       default: prod
     - name: app-path
       description: Path in gitops repo
-      default: mq/environments
+      default: sample-java-app/environments
     - name: qm-security
       description: Enable security for queueManager
       default: "false"
@@ -28,9 +28,9 @@ spec:
       default: "true"
     - name: test-plan
       description: Path of the postman collection
-      default: "jmeter/mq-spring-app.jmx"
+      default: "jmeter/sample-java-app-spring-app.jmx"
   tasks:
-    - name: mq-stage-instance-tests
+    - name: sample-java-app-stage-instance-tests
       taskRef:
         name: ibm-cphtestp-performance-test
       params:
@@ -46,7 +46,7 @@ spec:
       taskRef:
         name: ibm-jmeter-performance-test
       runAfter:
-        - mq-stage-instance-tests
+        - sample-java-app-stage-instance-tests
       params:
         - name: git-url
           value: "$(params.git-url)"

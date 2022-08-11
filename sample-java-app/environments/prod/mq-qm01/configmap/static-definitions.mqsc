@@ -10,4 +10,4 @@ ALTER QMGR CHLAUTH (DISABLED)
 REFRESH SECURITY TYPE(CONNAUTH)
 
 * optional
-DEFINE SERVICE(APPLY_MQSC) CONTROL(QMGR) SERVTYPE(SERVER) STARTCMD('/mq-config/start-mqsc.sh') STARTARG(QM1) STOPCMD('/mq-config/start-mqsc.sh') STOPARG('') STDOUT('') STDERR('')
+DEFINE SERVICE(APPLY_sample-java-appSC) CONTROL(QMGR) SERVTYPE(SERVER) STARTCMD('/sample-java-app-config/start-sample-java-appsc.sh') STARTARG(QM1) STOPCMD('/sample-java-app-config/start-sample-java-appsc.sh') STOPARG('') STDOUT('') STDERR('')

@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prod-mq-metric-samples-instance
+  name: prod-sample-java-app-metric-samples-instance
   annotations:
     argocd.argoproj.io/sync-wave: "300"
   finalizers:
@@ -12,7 +12,7 @@ spec:
     server: https://kubernetes.default.svc
   project: applications
   source:
-    path: mq/environments/prod/mq-metric-samples/
+    path: sample-java-app/environments/prod/sample-java-app-metric-samples/
     repoURL: https://github.com/mf-java/multi-tenancy-gitops-apps.git
     targetRevision: master
   syncPolicy:

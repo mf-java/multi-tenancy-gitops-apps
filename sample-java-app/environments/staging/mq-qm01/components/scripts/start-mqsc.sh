@@ -1,18 +1,18 @@
 #!/bin/bash
 #
-# A simple MVP script that will run MQSC against a queue manager.
+# A simple MVP script that will run sample-java-appSC against a queue manager.
 ckksum=""
 
-# Outer loop that keeps the MQ service running
+# Outer loop that keeps the sample-java-app service running
 while true; do
 
-   tmpCksum=`cksum /dynamic-mq-config-mqsc/dynamic-definitions.mqsc | cut -d" " -f1`
+   tmpCksum=`cksum /dynamic-sample-java-app-config-sample-java-appsc/dynamic-definitions.sample-java-appsc | cut -d" " -f1`
 
    if (( tmpCksum != cksum ))
    then
       cksum=$tmpCksum
-      echo "Applying MQSC"
-      runmqsc $1 < /dynamic-mq-config-mqsc/dynamic-definitions.mqsc
+      echo "Applying sample-java-appSC"
+      runsample-java-appsc $1 < /dynamic-sample-java-app-config-sample-java-appsc/dynamic-definitions.sample-java-appsc
    else
       sleep 3
    fi

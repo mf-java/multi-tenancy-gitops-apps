@@ -1,5 +1,5 @@
 resources:
- - ../../base/mq-metric-samples
+ - ../../base/sample-java-app-metric-samples
  - configmap/configmap.yaml
 patchesStrategicMerge:
- - mq-spring-app/deployment.yaml
+ - sample-java-app-spring-app/deployment.yaml

@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: ibm-smoke-tests-mq
+  name: ibm-smoke-tests-sample-java-app
   annotations:
     description: Deploys the application to the CI environment for verification using the provided helm chart
     app.openshift.io/description: Deploys the application to the CI environment for verification using the provided helm chart
@@ -203,11 +203,11 @@ spec:
 
           echo "Print the queue details: ..."
           echo ""
-          kubectl exec $podname -- /bin/bash -c "echo \"define qlocal($queue) replace\" | runmqsc "
+          kubectl exec $podname -- /bin/bash -c "echo \"define qlocal($queue) replace\" | runsample-java-appsc "
 
           echo "Print the queue details: ..."
           echo ""
-          kubectl exec $podname -- /bin/bash -c "echo \"DISPLAY QL($queue) ALL\" | runmqsc" > checkQ.txt 2>&1
+          kubectl exec $podname -- /bin/bash -c "echo \"DISPLAY QL($queue) ALL\" | runsample-java-appsc" > checkQ.txt 2>&1
           cat checkQ.txt
 
           if grep -q "QUEUE($queue)" checkQ.txt; then
@@ -217,7 +217,7 @@ spec:
           fi
 
           # put message on queue
-          kubectl exec $podname -- /bin/bash -c "echo \"hello-world\" | /opt/mqm/samp/bin/amqsput $queue" > putMessage.txt 2>&1
+          kubectl exec $podname -- /bin/bash -c "echo \"hello-world\" | /opt/sample-java-appm/samp/bin/asample-java-appsput $queue" > putMessage.txt 2>&1
           cat putMessage.txt
           echo "----------"
           fail="reason code"
@@ -228,7 +228,7 @@ spec:
           fi
 
           # get message on queue
-          kubectl exec $podname  -c qmgr -- /opt/mqm/samp/bin/amqsget $queue > getMessage.txt 2>&1
+          kubectl exec $podname  -c qmgr -- /opt/sample-java-appm/samp/bin/asample-java-appsget $queue > getMessage.txt 2>&1
           cat getMessage.txt
           if grep -q "hello-world" getMessage.txt; then
               echo "Message has been found on the queue."

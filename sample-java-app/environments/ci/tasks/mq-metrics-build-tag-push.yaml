@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: mq-metrics-build-tag-push
+  name: sample-java-app-metrics-build-tag-push
   annotations:
     description: Executes logic to build, tag and push a container image using the intermediate sha tag to the image-url
     app.openshift.io/description: Executes logic to build, tag and push a container image using the intermediate sha tag to the image-url
@@ -112,18 +112,18 @@ spec:
 
         ########## START
         # This script is based in the buildah.sh script that can be found in the 
-        # mq-metrics-samples GitHub repository (https://github.com/ibm-messaging/mq-metric-samples)
+        # sample-java-app-metrics-samples GitHub repository (https://github.com/ibm-messaging/sample-java-app-metric-samples)
 
         # This guide will use the prometheus agent.
-        COLL="mq_prometheus"
+        COLL="sample-java-app_prometheus"
 
         # Set some variables.
         ORG="github.com/cloud-native-toolkit-demos"
-        REPO="mq-metric-samples"
+        REPO="sample-java-app-metric-samples"
         VRMF=9.2.4.0
-        db=`echo $COLL | sed "s/mq_//g"`
+        db=`echo $COLL | sed "s/sample-java-app_//g"`
         #
-        imgName="mq-metric-$db"
+        imgName="sample-java-app-metric-$db"
         imgNameRuntime=$imgName-runtime
         imgNameBuild=$imgName-build
 
@@ -155,26 +155,26 @@ spec:
         fi
 
         # Set up the environment that's going to be needed to download the correct
-        # MQ client libraries and to strip out unneeded components from that package.
-        buildah config --env genmqpkg_incnls=1 \
-                      --env genmqpkg_incsdk=1 \
-                      --env genmqpkg_inctls=1 \
-                      --env RDURL="https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/messaging/mqdev/redist" \
-                      --env RDTAR="IBM-MQC-Redist-LinuxX64.tar.gz" \
+        # sample-java-app client libraries and to strip out unneeded components from that package.
+        buildah config --env gensample-java-apppkg_incnls=1 \
+                      --env gensample-java-apppkg_incsdk=1 \
+                      --env gensample-java-apppkg_inctls=1 \
+                      --env RDURL="https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/messaging/sample-java-appdev/redist" \
+                      --env RDTAR="IBM-sample-java-appC-Redist-LinuxX64.tar.gz" \
                       --env VRMF="$VRMF" \
                       --env ORG="$ORG" \
                       --env REPO="$REPO" \
                         $buildCtr
 
-        # Get the MQ redistributable client downloaded and installed. Use the genmqpkg command
+        # Get the sample-java-app redistributable client downloaded and installed. Use the gensample-java-apppkg command
         # to delete parts we don't need.
         
-        buildah run $buildCtr mkdir -p /opt/go/src/$ORG/$REPO /opt/bin /opt/config /opt/mqm
-        buildah run $buildCtr /bin/bash -c 'cd /opt/mqm \
+        buildah run $buildCtr mkdir -p /opt/go/src/$ORG/$REPO /opt/bin /opt/config /opt/sample-java-appm
+        buildah run $buildCtr /bin/bash -c 'cd /opt/sample-java-appm \
                         && curl -LO "$RDURL/$VRMF-$RDTAR" \
                         && tar -zxf ./*.tar.gz \
                         && rm -f ./*.tar.gz \
-                        && bin/genmqpkg.sh -b /opt/mqm'
+                        && bin/gensample-java-apppkg.sh -b /opt/sample-java-appm'
 
         # Copy over the source tree
         buildah config --workingdir /opt/go/src/$ORG/$REPO $buildCtr
@@ -230,13 +230,13 @@ spec:
 
         # Copy over the binaries that are going to be needed. Go doesn't have any
         # separate runtime; it builds standalone programs. All we need to add is the
-        # MQ client code and the configuration file
+        # sample-java-app client code and the configuration file
         echo "Copying built objects to runtime container"
-        buildah copy -q --from $imgNameBuild $runtimeCtr /opt/mqm /opt/mqm
+        buildah copy -q --from $imgNameBuild $runtimeCtr /opt/sample-java-appm /opt/sample-java-appm
         buildah copy -q --from $imgNameBuild $runtimeCtr /opt/bin /opt/bin
         buildah copy -q --from $imgNameBuild $runtimeCtr /opt/config /opt/config
 
-        buildah config --env IBMMQ_GLOBAL_CONFIGURATIONFILE=/opt/config/$COLL.yaml $runtimeCtr
+        buildah config --env IBMsample-java-app_GLOBAL_CONFIGURATIONFILE=/opt/config/$COLL.yaml $runtimeCtr
 
         # Complete the runtime container with an entrypoint
         buildah config --entrypoint /opt/bin/$COLL $runtimeCtr
@@ -248,7 +248,7 @@ spec:
         # # configuration file which makes it easy to have a basic common config with only container-specific overrides
         # # provided via the env vars.
         # # We also map the port number to something different - the Prometheus engine would be configured to connect
-        # # to 9158 even though the collector is listening on 9157 (the assigned number for MQ).
+        # # to 9158 even though the collector is listening on 9157 (the assigned number for sample-java-app).
         # # Rather than having the config file embedded in the container image, you might prefer to mount it from a real local
         # # filesystem.
 
@@ -259,9 +259,9 @@ spec:
         # # fi
 
         # # podman run \
-        # #     -e IBMMQ_GLOBAL_LOGLEVEL=DEBUG \
-        # #     -e IBMMQ_CONNECTION_CONNNAME=$addr \
-        # #     -e IBMMQ_CONNECTION_CHANNEL=SYSTEM.DEF.SVRCONN \
+        # #     -e IBMsample-java-app_GLOBAL_LOGLEVEL=DEBUG \
+        # #     -e IBMsample-java-app_CONNECTION_CONNNAME=$addr \
+        # #     -e IBMsample-java-app_CONNECTION_CHANNEL=SYSTEM.DEF.SVRCONN \
         # #     -p 9158:9157 \
         # #     $imgNameRuntime
         ########## END

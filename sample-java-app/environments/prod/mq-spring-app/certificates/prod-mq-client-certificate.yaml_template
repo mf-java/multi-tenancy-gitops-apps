@@ -1,7 +1,7 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: prod-mq-client-cert
+  name: prod-sample-java-app-client-cert
 spec:
   dnsNames:
     - >- 
@@ -17,12 +17,12 @@ spec:
       create: true
       passwordSecretRef:
         key: KEY_STORE_PASSWORD
-        name: mq-client-jks-password
+        name: sample-java-app-client-jks-password
   issuerRef:
     group: cert-manager.io
     kind: ClusterIssuer
-    name: selfsigned-mq-cluster-issuer
-  secretName: mq-client-jks
+    name: selfsigned-sample-java-app-cluster-issuer
+  secretName: sample-java-app-client-jks
   subject:
     organizations:
     - ibm

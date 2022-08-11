@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: mq-spring-app-dev
+  name: sample-java-app-spring-app-dev
   annotations:
     app.openshift.io/runtime: openjdk
     app.openshift.io/builder: maven
@@ -20,7 +20,7 @@ spec:
       default: dev
     - name: app-path
       description: Path in gitops repo
-      default: mq/environments
+      default: sample-java-app/environments
     - name: security
       description: enable app security
       default: "false"
@@ -148,7 +148,7 @@ spec:
           value: $(tasks.setup.results.scan-ibm)
     - name: gitops
       taskRef:
-        name: ibm-gitops-for-mq
+        name: ibm-gitops-for-sample-java-app
       runAfter:
         - img-scan
       params:

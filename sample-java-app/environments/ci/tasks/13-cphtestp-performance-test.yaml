@@ -90,9 +90,9 @@ spec:
         if [ ! -f /source/route.txt ]; then
           # QMGR_NAME="qm-dev"
           QMGR_NAME=$(oc get qmgr -n ${SRC_ENV} | awk 'NR>1 { printf sep $1; sep=" "}')
-          MQ_QM_NAME=$(oc get qmgr ${QMGR_NAME} -o jsonpath='{.spec.queueManager.name}' -n ${SRC_ENV})
-          QMGR_HOST_NAME=$(oc get svc ${QMGR_NAME}-ibm-mq -o jsonpath='{.metadata.name}' -n ${SRC_ENV})
-          QMGR_HTTP_PORT=$(oc get svc ${QMGR_NAME}-ibm-mq -o jsonpath='{.spec.ports[1].port}' -n ${SRC_ENV})
+          sample-java-app_QM_NAME=$(oc get qmgr ${QMGR_NAME} -o jsonpath='{.spec.queueManager.name}' -n ${SRC_ENV})
+          QMGR_HOST_NAME=$(oc get svc ${QMGR_NAME}-ibm-sample-java-app -o jsonpath='{.metadata.name}' -n ${SRC_ENV})
+          QMGR_HTTP_PORT=$(oc get svc ${QMGR_NAME}-ibm-sample-java-app -o jsonpath='{.spec.ports[1].port}' -n ${SRC_ENV})
           oc delete job cphtestp -n ${SRC_ENV} || true
           if [ "$(params.qm-security)" = "false" ]; then
         cat <<EOF | oc apply -f -
@@ -113,27 +113,27 @@ spec:
               - env:
                 - name: LICENSE
                   value: accept
-                - name: MQ_QMGR_HOSTNAME
+                - name: sample-java-app_QMGR_HOSTNAME
                   value: ${QMGR_HOST_NAME}
-                - name: MQ_QMGR_PORT
+                - name: sample-java-app_QMGR_PORT
                   value: "${QMGR_HTTP_PORT}"
-                - name: MQ_USERID
+                - name: sample-java-app_USERID
                   value:
-                - name: MQ_PASSWORD
+                - name: sample-java-app_PASSWORD
                   value:
-                - name: MQ_QMGR_CHANNEL
+                - name: sample-java-app_QMGR_CHANNEL
                   value: IBM.APP.SVRCONN
-                - name: MQ_RESPONDER_THREADS
+                - name: sample-java-app_RESPONDER_THREADS
                   value: "64"
-                - name: MQ_NON_PERSISTENT
+                - name: sample-java-app_NON_PERSISTENT
                   value: "0"
-                - name: MQ_QMGR_NAME
-                  value: ${MQ_QM_NAME}
-                - name: MQ_DATA
+                - name: sample-java-app_QMGR_NAME
+                  value: ${sample-java-app_QM_NAME}
+                - name: sample-java-app_DATA
                   value:
-                - name: MQ_RESULTS_CSV
+                - name: sample-java-app_RESULTS_CSV
                   value: "true"
-                - name: MQ_RESULTS
+                - name: sample-java-app_RESULTS
                   value: "false"
                 image: quay.io/cloudnativetoolkit/cphtestp:v1
                 imagePullPolicy: Always

@@ -1,9 +1,9 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: mq-qm-dev
+  name: sample-java-app-qm-dev
   annotations:
-    app.openshift.io/runtime: mq
+    app.openshift.io/runtime: sample-java-app
 spec:
   params:
     - name: git-url
@@ -19,7 +19,7 @@ spec:
       default: dev
     - name: app-path
       description: Path in gitops repo
-      default: mq/environments
+      default: sample-java-app/environments
     - name: security
       description: Enable security for queueManager
       default: "false"
@@ -60,9 +60,9 @@ spec:
           value: "$(tasks.setup.results.image-repository)"
         - name: image-tag
           value: "$(tasks.setup.results.image-tag)"
-    - name: smoke-tests-mq
+    - name: smoke-tests-sample-java-app
       taskRef:
-        name: ibm-smoke-tests-mq
+        name: ibm-smoke-tests-sample-java-app
       runAfter:
         - build
       params:
@@ -96,7 +96,7 @@ spec:
       taskRef:
         name: ibm-tag-release-v2-6-13
       runAfter:
-        - smoke-tests-mq
+        - smoke-tests-sample-java-app
       params:
         - name: git-url
           value: "$(tasks.setup.results.git-url)"
@@ -130,7 +130,7 @@ spec:
           value: $(tasks.setup.results.scan-ibm)
     - name: gitops
       taskRef:
-        name: ibm-gitops-for-mq
+        name: ibm-gitops-for-sample-java-app
       runAfter:
         - img-scan
       params:

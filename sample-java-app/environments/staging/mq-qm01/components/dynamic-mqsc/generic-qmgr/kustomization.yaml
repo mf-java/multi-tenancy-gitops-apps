@@ -6,10 +6,10 @@ generatorOptions:
 
 # Create a configMap that will be used with a volume that is dynamically updated.
 configMapGenerator:
-- name: dynamic-mqsc-configmap
+- name: dynamic-sample-java-appsc-configmap
   behavior: create
   files:
-  - dynamic-definitions.mqsc
+  - dynamic-definitions.sample-java-appsc
 
 patchesStrategicMerge:
   - ./queuemanager.yaml

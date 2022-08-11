@@ -1,15 +1,15 @@
 ---
-# Source: mq-metric-samples/templates/route.yaml
+# Source: sample-java-app-metric-samples/templates/route.yaml
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: mq-metric-samples
+  name: sample-java-app-metric-samples
   annotations:
     argocd.argoproj.io/sync-options: Validate=false
 spec:
   to:
     kind: Service
-    name: mq-metric-samples
+    name: sample-java-app-metric-samples
     weight: 100
   tls:
     termination: edge

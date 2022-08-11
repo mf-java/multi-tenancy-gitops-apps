@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: mq-quarkus-app-dev
+  name: sample-java-app-quarkus-app-dev
   annotations:
     app.openshift.io/runtime: openjdk
     app.openshift.io/builder: maven
@@ -20,7 +20,7 @@ spec:
       default: dev
     - name: app-path
       description: Path in gitops repo
-      default: mq/environments
+      default: sample-java-app/environments
     - name: security
       description: enable app security
       default: "false"

@@ -3,6 +3,6 @@
 CLUSTER_DOMAIN=$(oc get dns cluster -o jsonpath='{ .spec.baseDomain }')
 
 # Create Kubernetes Secret yaml
-( echo "cat <<EOF" ; cat ci-mq-server-certificate.yaml_template ; echo EOF ) | \
+( echo "cat <<EOF" ; cat ci-sample-java-app-server-certificate.yaml_template ; echo EOF ) | \
 CLUSTER_DOMAIN=${CLUSTER_DOMAIN} \
-sh > ci-mq-server-certificate.yaml
+sh > ci-sample-java-app-server-certificate.yaml

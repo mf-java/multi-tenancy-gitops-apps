@@ -1,4 +1,4 @@
 resources:
-  - mq-qm01/
-  - mq-metric-samples/
-  - mq-spring-app/
+  - sample-java-app-qm01/
+  - sample-java-app-metric-samples/
+  - sample-java-app-spring-app/

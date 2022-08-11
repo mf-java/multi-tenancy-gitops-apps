@@ -1,13 +1,13 @@
 ---
-# Source: mq-spring-app/templates/service.yaml
+# Source: sample-java-app-spring-app/templates/service.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: mq-spring-app
+  name: sample-java-app-spring-app
   labels:
-    app.kubernetes.io/name: mq-spring-app
-    app.kubernetes.io/instance: mq-spring-app
-    app: mq-spring-app
+    app.kubernetes.io/name: sample-java-app-spring-app
+    app.kubernetes.io/instance: sample-java-app-spring-app
+    app: sample-java-app-spring-app
 spec:
   type: ClusterIP
   ports:
@@ -16,5 +16,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app.kubernetes.io/name: mq-spring-app
-    app.kubernetes.io/instance: mq-spring-app
+    app.kubernetes.io/name: sample-java-app-spring-app
+    app.kubernetes.io/instance: sample-java-app-spring-app

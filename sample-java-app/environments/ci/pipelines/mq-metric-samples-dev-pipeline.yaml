@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: mq-metric-samples-dev
+  name: sample-java-app-metric-samples-dev
   annotations:
     app.openshift.io/builder: buildah
 spec:
@@ -19,7 +19,7 @@ spec:
       default: dev
     - name: app-path
       description: Path in gitops repo
-      default: mq/environments
+      default: sample-java-app/environments
     - name: git-pr
       description: Enable the pipeline to do a PR for the gitops repo
       default: "false"
@@ -42,7 +42,7 @@ spec:
           value: $(params.scan-image)
     - name: build
       taskRef:
-        name: mq-metrics-build-tag-push
+        name: sample-java-app-metrics-build-tag-push
       runAfter:
         - setup
       params:
@@ -98,7 +98,7 @@ spec:
           value: $(tasks.setup.results.scan-ibm)
     - name: gitops
       taskRef:
-        name: ibm-gitops-for-mq
+        name: ibm-gitops-for-sample-java-app
       runAfter:
         - img-scan
       params:

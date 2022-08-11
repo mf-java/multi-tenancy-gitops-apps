@@ -1,10 +1,10 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: ibm-gitops-for-mq
+  name: ibm-gitops-for-sample-java-app
   annotations:
-    description: Generates MQ artifacts
-    app.openshift.io/description: Generates MQ artifacts
+    description: Generates sample-java-app artifacts
+    app.openshift.io/description: Generates sample-java-app artifacts
     app.openshift.io/vcs-uri: https://github.com/IBM/ibm-garage-tekton-tasks
     app.openshift.io/vcs-ref: master
   labels:
@@ -264,8 +264,8 @@ spec:
             echo "No change in deployment file"
           fi
 
-          if ls $SOURCE_DIR/*.mqsc &> /dev/null; then
-            cp -r "$SOURCE_DIR"/*.mqsc $(params.app-path)/$(params.environment)/"${SUBDIR}"/configmap
+          if ls $SOURCE_DIR/*.sample-java-appsc &> /dev/null; then
+            cp -r "$SOURCE_DIR"/*.sample-java-appsc $(params.app-path)/$(params.environment)/"${SUBDIR}"/configmap
           fi
 
           if ls $SOURCE_DIR/*.ini &> /dev/null; then

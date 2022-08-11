@@ -1,13 +1,13 @@
 ---
-# Source: mq-metric-samples/templates/service.yaml
+# Source: sample-java-app-metric-samples/templates/service.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: mq-metric-samples
+  name: sample-java-app-metric-samples
   labels:
-    app.kubernetes.io/name: mq-metric-samples
-    app.kubernetes.io/instance: mq-metric-samples
-    app: mq-metric-samples
+    app.kubernetes.io/name: sample-java-app-metric-samples
+    app.kubernetes.io/instance: sample-java-app-metric-samples
+    app: sample-java-app-metric-samples
 spec:
   type: ClusterIP
   ports:
@@ -16,5 +16,5 @@ spec:
       protocol: TCP
       name: metrics
   selector:
-    app.kubernetes.io/name: mq-metric-samples
-    app.kubernetes.io/instance: mq-metric-samples
+    app.kubernetes.io/name: sample-java-app-metric-samples
+    app.kubernetes.io/instance: sample-java-app-metric-samples

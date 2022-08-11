@@ -12,7 +12,7 @@ spec:
     server: https://kubernetes.default.svc
   project: applications
   source:
-    path: mq/environments/tools/
+    path: sample-java-app/environments/tools/
     repoURL: https://github.com/mf-java/multi-tenancy-gitops-apps.git
     targetRevision: master
   syncPolicy:

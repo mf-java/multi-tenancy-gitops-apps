@@ -45,7 +45,7 @@ rules:
   - verbs:
       - '*'
     apiGroups:
-      - 'mq.ibm.com'
+      - 'sample-java-app.ibm.com'
     resources:
       - queuemanagers
   - verbs:

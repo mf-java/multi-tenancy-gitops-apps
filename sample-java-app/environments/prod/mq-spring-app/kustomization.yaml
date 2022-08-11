@@ -1,9 +1,9 @@
 resources:
- - ../../base/mq-spring-app
+ - ../../base/sample-java-app-spring-app
  - configmap/configmap.yaml
  - configmap/configmap-ccdt.yaml
- #- certificates/prod-mq-client-certificate.yaml
- #- certificates/prod-mq-server-certificate.yaml
- #- secrets/mq-client-jks-password-secret.yaml
+ #- certificates/prod-sample-java-app-client-certificate.yaml
+ #- certificates/prod-sample-java-app-server-certificate.yaml
+ #- secrets/sample-java-app-client-jks-password-secret.yaml
 patchesStrategicMerge:
  - deployment/deployment.yaml

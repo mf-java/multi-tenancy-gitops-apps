@@ -3,17 +3,17 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: mq-metric-samples
+  name: sample-java-app-metric-samples
   labels:
-    app.kubernetes.io/instance: mq-metric-samples
+    app.kubernetes.io/instance: sample-java-app-metric-samples
 data:
-  IBMMQ_GLOBAL_USEOBJECTSTATUS: 'true'
-  IBMMQ_OBJECTS_SUBSCRIPTIONS: '!$SYS*'
-  IBMMQ_CONNECTION_CHANNEL: MONITORING_CHL
-  IBMMQ_CONNECTION_CONNNAME: qm1-ibm-mq.prod.svc.cluster.local(1414)
-  IBMMQ_OBJECTS_QUEUES: '!SYSTEM.*,!AMQ.*,*'
-  IBMMQ_GLOBAL_LOGLEVEL: INFO
-  IBMMQ_CONNECTION_QUEUEMANAGER: QM1
-  IBMMQ_OBJECTS_TOPICS: '!*'
-  IBMMQ_GLOBAL_USEPUBLICATIONS: 'false'
-  IBMMQ_GLOBAL_CONFIGURATIONFILE: ''
+  IBMsample-java-app_GLOBAL_USEOBJECTSTATUS: 'true'
+  IBMsample-java-app_OBJECTS_SUBSCRIPTIONS: '!$SYS*'
+  IBMsample-java-app_CONNECTION_CHANNEL: MONITORING_CHL
+  IBMsample-java-app_CONNECTION_CONNNAME: qm1-ibm-sample-java-app.prod.svc.cluster.local(1414)
+  IBMsample-java-app_OBJECTS_QUEUES: '!SYSTEM.*,!Asample-java-app.*,*'
+  IBMsample-java-app_GLOBAL_LOGLEVEL: INFO
+  IBMsample-java-app_CONNECTION_QUEUEMANAGER: QM1
+  IBMsample-java-app_OBJECTS_TOPICS: '!*'
+  IBMsample-java-app_GLOBAL_USEPUBLICATIONS: 'false'
+  IBMsample-java-app_GLOBAL_CONFIGURATIONFILE: ''

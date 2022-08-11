@@ -1,17 +1,17 @@
 resources:
-#- certificates/ci-mq-client-certificate.yaml
-#- certificates/ci-mq-server-certificate.yaml
+#- certificates/ci-sample-java-app-client-certificate.yaml
+#- certificates/ci-sample-java-app-server-certificate.yaml
 - configmaps/gitops-repo-configmap.yaml
 #- eventlisteners/cntk-event-listener.yaml
 #- triggerbindings/cntk-binding.yaml
-#- triggertemplates/mq-qm-dev.yaml
-#- triggertemplates/mq-spring-app-dev.yaml
-#- pipelines/mq-metric-samples-dev-pipeline.yaml
+#- triggertemplates/sample-java-app-qm-dev.yaml
+#- triggertemplates/sample-java-app-spring-app-dev.yaml
+#- pipelines/sample-java-app-metric-samples-dev-pipeline.yaml
 - pipelines/ibm-test-pipeline-for-dev.yaml
 - pipelines/ibm-test-pipeline-for-stage.yaml
 #- pipelines/java-maven-dev-pipeline.yaml
-- pipelines/mq-pipeline-dev.yaml
-- pipelines/mq-spring-app-dev-pipeline.yaml
+- pipelines/sample-java-app-pipeline-dev.yaml
+- pipelines/sample-java-app-spring-app-dev-pipeline.yaml
 - roles/custom-pipeline-sa-clusterrole.yaml
 - roles/custom-pipeline-sa-role.yaml
 - roles/custom-ci-pipeline-sa-rolebinding.yaml
@@ -22,15 +22,15 @@ resources:
 #- secrets/artifactory-access-secret.yaml
 - secrets/git-credentials-secret.yaml
 - secrets/ibm-entitled-registry-credentials-secret.yaml
-#- secrets/mq-client-jks-password-secret.yaml
+#- secrets/sample-java-app-client-jks-password-secret.yaml
 - tasks/10-gitops.yaml
-- tasks/10-gitops-for-mq.yaml
+- tasks/10-gitops-for-sample-java-app.yaml
 - tasks/10-gitops-promotion.yaml
 - tasks/11-app-name.yaml
 - tasks/12-functional-tests.yaml
 - tasks/13-jmeter-performance-test.yaml
 - tasks/13-cphtestp-performance-test.yaml
-- tasks/4-smoke-tests-mq.yaml
+- tasks/4-smoke-tests-sample-java-app.yaml
 - tasks/4-smoke-tests.yaml
 - tasks/ibm-build-tag-push-v2-6-13.yaml
 - tasks/ibm-helm-release-v2-6-13.yaml
@@ -39,22 +39,22 @@ resources:
 - tasks/ibm-java-maven-test-v2-6-13.yaml
 - tasks/ibm-setup-v2-6-13.yaml
 - tasks/ibm-tag-release-v2-6-13.yaml
-#- tasks/mq-metrics-build-tag-push.yaml
+#- tasks/sample-java-app-metrics-build-tag-push.yaml
 
 # Automated promotion process triggers
 
-# - triggertemplates/mq-qm-dev-triggertemplate.yaml
-# - eventlisteners/mq-qm-dev-eventlistener.yaml
-# - routes/mq-qm-dev-route.yaml
+# - triggertemplates/sample-java-app-qm-dev-triggertemplate.yaml
+# - eventlisteners/sample-java-app-qm-dev-eventlistener.yaml
+# - routes/sample-java-app-qm-dev-route.yaml
 #
-# - triggertemplates/mq-spring-app-dev-triggertemplate.yaml
-# - eventlisteners/mq-spring-app-dev-eventlistener.yaml
-# - routes/mq-spring-app-dev-route.yaml
+# - triggertemplates/sample-java-app-spring-app-dev-triggertemplate.yaml
+# - eventlisteners/sample-java-app-spring-app-dev-eventlistener.yaml
+# - routes/sample-java-app-spring-app-dev-route.yaml
 #
-# - triggertemplates/mq-qm-stage-triggertemplate.yaml
-# - eventlisteners/mq-qm-stage-eventlistener.yaml
-# - routes/mq-qm-stage-route.yaml
+# - triggertemplates/sample-java-app-qm-stage-triggertemplate.yaml
+# - eventlisteners/sample-java-app-qm-stage-eventlistener.yaml
+# - routes/sample-java-app-qm-stage-route.yaml
 #
-# - triggertemplates/mq-spring-app-stage-triggertemplate.yaml
-# - eventlisteners/mq-spring-app-stage-eventlistener.yaml
-# - routes/mq-spring-app-stage-route.yaml
+# - triggertemplates/sample-java-app-spring-app-stage-triggertemplate.yaml
+# - eventlisteners/sample-java-app-spring-app-stage-eventlistener.yaml
+# - routes/sample-java-app-spring-app-stage-route.yaml
