@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dev-sample-java-app-spring-app-instance
+  name: dev-sample-java-app-instance
   annotations:
     argocd.argoproj.io/sync-wave: "300"
   finalizers:
@@ -12,7 +12,7 @@ spec:
     server: https://kubernetes.default.svc
   project: applications
   source:
-    path: sample-java-app/environments/dev/sample-java-app-spring-app/
+    path: sample-java-app/environments/dev/sample-java-app/
     repoURL: https://github.com/mf-java/multi-tenancy-gitops-apps.git
     targetRevision: master
   syncPolicy:
