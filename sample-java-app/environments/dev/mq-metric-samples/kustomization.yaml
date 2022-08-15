@@ -1,5 +1,0 @@
-resources:
- - ../../base/sample-java-app-metric-samples
- - configmap/configmap.yaml
-patchesStrategicMerge:
- - sample-java-app-metric-samples/deployment.yaml
