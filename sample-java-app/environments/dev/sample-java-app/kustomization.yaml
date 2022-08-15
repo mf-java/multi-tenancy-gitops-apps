@@ -1,7 +1,7 @@
 resources:
- - ../../base/sample-java-app
- - configmap/configmap.yaml
- - configmap/configmap-ccdt.yaml
+#  - ../../base/sample-java-app
+#  - configmap/configmap.yaml
+#  - configmap/configmap-ccdt.yaml
  # - deployment/hooks/post-sync-job.yaml
  # - certificates/dev-sample-java-app-client-certificate.yaml
  # - certificates/dev-sample-java-app-server-certificate.yaml
